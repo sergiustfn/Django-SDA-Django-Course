@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Update Student{% endblock title %}
+{% block content %}
+    {% if perms.change_student %}
+    <div class = 'row'>
+    <div class="row col-md-6 offset-md-3">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary"> Submit Update</button>
+    </form>
+    </div>
+    </div>
+    {% endif %}
+{% endblock content %}
+

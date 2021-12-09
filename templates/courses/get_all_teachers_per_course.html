@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block title %} All Courses {% endblock title %}
+
+
+{% block content %}
+
+    <div style="margin-top:200px">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for teacher in teachers_per_course %}
+            <tr>
+            <td>{{ teacher.first_name }} {{ teacher.last_name }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock content %}
+
+

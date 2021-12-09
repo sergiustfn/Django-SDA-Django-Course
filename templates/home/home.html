@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} List of students {% endblock %}
+
+{% block content %}
+<h1> List of students</h1>
+{% for student in all_students %}
+    {% if student.first_name == 'Sergiu' %}
+        <p> {{ student.first_name }}</p>
+        <p> {{ student.last_name }}</p>
+        <p> {{ student.age }}</p>
+        <br>
+    {% endif %}
+{% endfor %}
+    <a href="{% url 'cars' %}" class="btn btn-primary">Go to Cars</a>
+{% endblock %}
+
+

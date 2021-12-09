@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% load static %}
+
+
+{% block content %}
+    {% if perms.view_teacher %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    <div style="margin-bottom: 20px">
+        <div class='col'>
+            <div class="col-md-3 offset-md-4">
+                <form method="GET">
+                    {{ my_filter.form }}
+                    <div class='offset-md-5' style="margin-top: 10px;">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% if perms.teacher.add_teacher %}
+        <div style=" margin-top: 20px">
+            <a href="{% url 'teacher' %}" class="btn btn-dark">Add a new teacher</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap">
+        {% for teacher in teacher_list %}
+            <div class="card bg-dark text-light" style="margin-right: 10px">
+                <div class="card-body">
+                    <div style="display: flex; flex-direction: row">
+                        <h5 class="card-title">{{ teacher.first_name }} {{ teacher.last_name }}</h5>
+                    </div>
+                    <p class="card-text ">{{ teacher.specialization }} </p>
+                    {% if teacher.active == True %}
+                        <p class="card-text ">The teacher is active </p>
+                    {% else %}
+                        <p class="card-text ">The teacher is in heaven now. </p>
+                    {% endif %}
+                    <p class="card-text ">Teacher description to be entered here </p>
+                    <a href="{% url 'teacher_update' teacher.id %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'delete_teacher' teacher.id %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'teacher_details' teacher.id %}" class="btn btn-info">More Details</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+{% endblock content %}
+
+
+
+
+
+

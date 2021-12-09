@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Detailed View Teacher {% endblock title %}
+
+
+{% block content %}
+{% if perms.view_teacher %}
+    <div class="card text-center">
+        <div class="card-header">
+            Created at: {{ teacher.created_at }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">  {{ teacher.first_name }} {{ teacher.last_name }}</h5>
+            <p>Specialization: {{ teacher.specialization }}</p>
+            <p> Teacher: {{ teacher.first_name }} {{ teacher.last_name }}</p>
+            {% if teacher.active == True %}
+                <p>The teacher is active</p>
+            {% else %}
+                <p>The teacher is in heaven now</p>
+            {% endif %}
+            <a href="{% url 'all_teachers' %}" class="btn btn-primary">Go to list of Teachers</a>
+        </div>
+        <div class="card-footer text-muted">
+            Registry updated at: {{ teacher.updated_at }}
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

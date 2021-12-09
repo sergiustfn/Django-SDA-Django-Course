@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Detailed View Student {% endblock title %}
+
+{% block content %}
+    {% if perms.view_student %}
+    <div class="card text-center">
+        <div class="card-header">
+
+
+            Created at: {{ student.created_at }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">  {{ student.first_name }} {{ student.last_name }}</h5>
+            <p>Age: {{ student.age }}</p>
+            <p> Gender: {{ student.gender }}</p>
+            <p> Teacher: {{ student.teacher.first_name }} {{ student.teacher.last_name }}</p>
+            <p>Date of birth: {{ student.date_of_birth }}</p>
+            <p>Olympic: {{ student.olympic }}</p>
+            <a href="{% url 'list_of_students' %}" class="btn btn-primary">Go to list of student</a>
+        </div>
+        <div class="card-footer text-muted">
+
+            Registry updated at: {{ student.updated_at }}
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+
