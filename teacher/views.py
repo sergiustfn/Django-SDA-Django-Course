@@ -2,10 +2,13 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+from rest_framework import viewsets
+
 from student.forms import TeacherForm
 from student.models import Student
 from teacher.filters import TeacherFilter
 from teacher.models import Teacher
+from teacher.serializers import TeacherSerializer
 
 
 class TeacherCreateView(CreateView):
@@ -58,3 +61,8 @@ def get_all_students_per_teacher(request, id_teacher):
     context = {'students': all_students_per_teacher}
 
     return render(request, 'student/get_all_students_per_teacher.html', context)
+
+
+class TeacherViewSet(viewsets.ModelViewSet):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherSerializer

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'animal',
     'course',
     'permission',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

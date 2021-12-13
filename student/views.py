@@ -1,19 +1,21 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
-
+from rest_framework import viewsets
 from student.filters import StudentFilter
 from student.forms import StudentForm
 from student.models import Student
+from student.serializers import StudentSerializer
 
 
 class StudentCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
-    template_name = 'student/create_student.html' #calea catre fisierul html unde va fi afisat forumlarul
+    template_name = 'student/create_student.html'  #calea catre fisierul html unde va fi afisat forumlarul
     model = Student  # modelul pe care il folosim in generarea formularului nostru
     # fields = '__all__' # returneaza toate field-urile din model
     success_url = reverse_lazy('create-student') #redirectionarea dupa ce formularul a fost validat.
     form_class = StudentForm
     permission_required = 'student.add_student'
+
 
 class StudentListView(PermissionRequiredMixin, ListView):
     template_name = 'student/list_students.html'
@@ -38,6 +40,7 @@ class StudentUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = StudentForm
     permission_required = 'student.change_student'
 
+
 class StudentDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'student/delete_student.html'
     model = Student
@@ -45,10 +48,14 @@ class StudentDeleteView(PermissionRequiredMixin, DeleteView):
     form_class = StudentForm
     permission_required = 'student.delete_student'
 
+
 class StudentDetailView(PermissionRequiredMixin, DetailView):
     template_name = 'student/detail_student.html'
     model = Student
     permission_required = 'student.view_student'
 
 
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 

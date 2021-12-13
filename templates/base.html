@@ -50,36 +50,36 @@
                                                          href="{% url 'logout' %}">Logout</a></li>
 
 
-                    <div class="collapse navbar-collapse" id="navbarResponsive" >
-                        <div class="dropdown-item"> List of teachers
-                        {% for teacher in teachers %}
-                            <li class="nav-item mx-0 mx-lg-1">
-                        <a href="{% url 'students_per_teacher' teacher.id %}">{{ teacher.first_name }} {{ teacher.last_name }}</a>
-                        {% endfor %}
-                             </li>
-                        </div>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="navbarResponsive" >
-                        <div class="dropdown-item"> List of teachers
-                        {% for teacher in teachers %}
-                            <li class="nav-item mx-0 mx-lg-1">
-                        <a href="{% url 'course_per_teacher' teacher.id %}">{{ teacher.first_name }} {{ teacher.last_name }}</a>
-                        {% endfor %}
-                             </li>
-                        </div>
-                    </div>
-
-                      <div class="collapse navbar-collapse" id="navbarResponsive" >
-                        <div class="dropdown-item"> List of courses
-                        {% for course in courses %}
-                            <li class="nav-item mx-0 mx-lg-1">
-                        <a href="{% url 'teacher_per_course' course.teacher.id %}">{{ course.name }}</a>
-                        {% endfor %}
-                             </li>
-                        </div>
-                    </div>
-s
+{#                    <div class="collapse navbar-collapse" id="navbarResponsive" >#}
+{#                        <div class="dropdown-item"> List of teachers#}
+{#                        {% for teacher in teachers %}#}
+{#                            <li class="nav-item mx-0 mx-lg-1">#}
+{#                        <a href="{% url 'students_per_teacher' teacher.id %}">{{ teacher.first_name }} {{ teacher.last_name }}</a>#}
+{#                        {% endfor %}#}
+{#                             </li>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="collapse navbar-collapse" id="navbarResponsive" >#}
+{#                        <div class="dropdown-item"> List of teachers#}
+{#                        {% for teacher in teachers %}#}
+{#                            <li class="nav-item mx-0 mx-lg-1">#}
+{#                        <a href="{% url 'course_per_teacher' teacher.id %}">{{ teacher.first_name }} {{ teacher.last_name }}</a>#}
+{#                        {% endfor %}#}
+{#                             </li>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                      <div class="collapse navbar-collapse" id="navbarResponsive" >#}
+{#                        <div class="dropdown-item"> List of courses#}
+{#                        {% for course in courses %}#}
+{#                            <li class="nav-item mx-0 mx-lg-1">#}
+{#                        <a href="{% url 'teacher_per_course' course.teacher.id %}">{{ course.name }}</a>#}
+{#                        {% endfor %}#}
+{#                             </li>#}
+{#                        </div>#}
+{#                    </div>#}
+{#s#}
 
                 {% else %}
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
